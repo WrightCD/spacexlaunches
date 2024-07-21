@@ -1,7 +1,7 @@
 <<<<<<< HEAD
-# 100875122-lab-test2-comp3133
+# Space X Launches
 =======
-# 100875122LabTest2Comp3133
+# Space X Launches
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
 
