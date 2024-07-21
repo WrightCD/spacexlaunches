@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 95%; /* Adjust as needed */
+  margin: 0 auto;
+  flex-wrap: nowrap; /* Ensure items don't wrap on desktop */
+}
+
+#Filter {
+  border: 1px solid black;
+  flex: 1; /* 1/4th of the area */
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+#Launches {
+  border: 1px solid black;
+  flex: 3; /* 3/4ths of the area */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.filter-section {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-section li {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #ff8c00; 
+  background-color: #ff8c00; 
+  color: #fff; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-section li:hover {
+  background-color: #ffa500;
+}
+
+.mission-card {
+  flex: 1 0 90%;
+  margin-bottom: 20px;
+  border: 1px dotted gray;
+  padding: 15px;
+  text-align: center;
+  background-color: #f0f8ff;
+}
+
+.warning {
+  padding: 30px;
+}
+
+.button {
+  background-color: #00008b; /* Dark blue */
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  #Filter, #Launches {
+    flex: 1 1 100%;
+  }
+
+  .mission-card {
+    flex: 1 1 100%;
+  }
+}

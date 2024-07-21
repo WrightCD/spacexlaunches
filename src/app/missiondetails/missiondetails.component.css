@@ -1,0 +1,74 @@
+.mission-details {
+  background-color: #1a1a1a; /* Dark almost black color */
+  padding: 20px;
+  border: 3px solid white; /* White border lines */
+}
+
+.mission-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mission-header img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  max-width: 100px; /* Restricting the size */
+  max-height: 100px; /* Restricting the size */
+}
+
+.details-title {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  border-bottom: 2px solid white; /* White border line */
+  color: #00ff00; /* Hacker looking green */
+}
+
+.mission-details h3 {
+  color: #00ff00; /* Hacker looking green */
+}
+
+.details-section {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  text-align: left;
+  color: white; /* White text */
+}
+
+.details-section > * {
+  margin-bottom: 10px;
+}
+
+.details-footer {
+  border-top: 2px dotted white; /* White border line */
+  padding-top: 10px;
+  text-align: center;
+  margin-top: 20px;
+  color: white; /* White text */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .mission-header {
+    flex-direction: column;
+  }
+
+  .mission-header img {
+    position: static;
+    margin: 0 auto 10px auto;
+    display: block;
+  }
+
+  .details-title {
+    font-size: calc(10px + 2vw); /* Responsive font size */
+    margin-bottom: 10px;
+    border-bottom: none; /* Remove border-bottom on mobile */
+  }
+}
