@@ -1,107 +1,68 @@
 export interface Mission {
-  flight_number: number;
-  mission_name: string;
-  mission_id: string[];
-  upcoming: boolean;
-  launch_year: string;
-  launch_date_unix: number;
-  launch_date_utc: string;
-  launch_date_local: string;
-  is_tentative: boolean;
-  tentative_max_precision: string;
-  tbd: boolean;
-  launch_window: number;
-  rocket: {
-    rocket_id: string;
-    rocket_name: string;
-    rocket_type: string;
-    first_stage: {
-      cores: {
-        core_serial: string;
-        flight: number;
-        block: number | null;
-        gridfins: boolean;
-        legs: boolean;
-        reused: boolean;
-        land_success: boolean | null;
-        landing_intent: boolean;
-        landing_type: string | null;
-        landing_vehicle: string | null;
-      }[];
-    };
-    second_stage: {
-      block: number;
-      payloads: {
-        payload_id: string;
-        norad_id: number[];
-        reused: boolean;
-        customers: string[];
-        nationality: string;
-        manufacturer: string | null;
-        payload_type: string;
-        payload_mass_kg: number | null;
-        payload_mass_lbs: number | null;
-        orbit: string;
-        orbit_params: {
-          reference_system: string;
-          regime: string;
-          longitude: number | null;
-          semi_major_axis_km: number | null;
-          eccentricity: number | null;
-          periapsis_km: number | null;
-          apoapsis_km: number | null;
-          inclination_deg: number | null;
-          period_min: number | null;
-          lifespan_years: number | null;
-          epoch: string | null;
-          mean_motion: number | null;
-          raan: number | null;
-          arg_of_pericenter: number | null;
-          mean_anomaly: number | null;
-        };
-      }[];
-    };
-    fairings: {
-      reused: boolean;
-      recovery_attempt: boolean;
-      recovered: boolean;
-      ship: string | null;
-    };
+  fairings: {
+    reused: boolean;
+    recovery_attempt: boolean;
+    recovered: boolean;
+    ships: string[];
   };
-  ships: string[];
-  telemetry: {
-    flight_club: string | null;
+  links: {
+    patch: {
+      small: string | null;
+      large: string | null;
+    };
+    reddit: {
+      campaign: string | null;
+      launch: string | null;
+      media: string | null;
+      recovery: string | null;
+    };
+    flickr: {
+      small: string[];
+      original: string[];
+    };
+    presskit: string | null;
+    webcast: string | null;
+    youtube_id: string | null;
+    article: string | null;
+    wikipedia: string | null;
   };
-  launch_site: {
-    site_id: string;
-    site_name: string;
-    site_name_long: string;
-  };
-  launch_success: boolean | null;
-  launch_failure_details: {
+  static_fire_date_utc: string | null;
+  static_fire_date_unix: number | null;
+  net: boolean;
+  window: number;
+  rocket: string;
+  success: boolean | null;
+  failures: {
     time: number;
     altitude: number | null;
     reason: string;
-  } | null;
-  links: {
-    mission_patch: string | null;
-    mission_patch_small: string | null;
-    reddit_campaign: string | null;
-    reddit_launch: string | null;
-    reddit_recovery: string | null;
-    reddit_media: string | null;
-    presskit: string | null;
-    article_link: string | null;
-    wikipedia: string | null;
-    video_link: string | null;
-    youtube_id: string | null;
-    flickr_images: string[];
-  };
-  details: string;
-  static_fire_date_utc: string | null;
-  static_fire_date_unix: number | null;
-  timeline: {
-    webcast_liftoff: number | null;
-  };
-  crew: string | null;
+  }[];
+  details: string | null;
+  crew: string[];
+  ships: string[];
+  capsules: string[];
+  payloads: string[];
+  launchpad: string;
+  flight_number: number;
+  name: string;
+  date_utc: string;
+  date_unix: number;
+  date_local: string;
+  date_precision: string;
+  upcoming: boolean;
+  cores: {
+    core: string;
+    flight: number;
+    gridfins: boolean;
+    legs: boolean;
+    reused: boolean;
+    landing_attempt: boolean;
+    landing_success: boolean | null;
+    landing_type: string | null;
+    landpad: string | null;
+  }[];
+  auto_update: boolean;
+  tbd: boolean;
+  launch_library_id: string | null;
+  id: string;
 }

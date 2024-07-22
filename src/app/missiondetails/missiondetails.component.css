@@ -21,6 +21,12 @@
   max-height: 100px; /* Restricting the size */
 }
 
+.rocket-images img{
+  max-width: 200px;
+  max-height: 200px;
+  padding: 35px
+}
+
 .details-title {
   font-size: 40px;
   text-align: center;

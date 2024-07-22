@@ -9,7 +9,7 @@ import { response } from 'express';
   styleUrls: ['./missionlist.component.css']
 })
 export class MissionlistComponent implements OnInit {
-  years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  years: string[] = [];
   mission_info: Mission[] = [];
   selectedMission: Mission | null = null;
 
@@ -21,13 +21,23 @@ export class MissionlistComponent implements OnInit {
   constructor(private spacexapiservice: SpacexapiService) {}
 
   ngOnInit(): void {
+    this.generateYears();
     this.getLaunches();
+  }
+
+  generateYears(): void {
+    const startYear = 2006;
+    const currentYear = new Date().getFullYear();
+    this.years = [];
+
+    for (let year = startYear; year <= currentYear; year++) {
+      this.years.push(year.toString());
+    }
   }
 
   getLaunches(): void {
     this.spacexapiservice.getLaunches().subscribe(
       (response: Mission[]) => {
-        console.log(response);
         this.mission_info = response
       },
       error => {
@@ -35,6 +45,12 @@ export class MissionlistComponent implements OnInit {
       }
     );
   }
+
+  extractYearFromDate(dateString: string): string {
+    return dateString.substring(0, 4); 
+  }
+
+  
 
   filterLaunchesByYear(year: string): void {
     this.spacexapiservice.getLaunchesByYear(year).subscribe(

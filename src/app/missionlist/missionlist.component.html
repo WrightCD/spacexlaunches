@@ -18,12 +18,17 @@
     <h2>Space X Mission Launch List</h2>
     <ng-container *ngIf="mission_info && mission_info.length > 0; else noMissions">
       <div *ngFor="let mission of mission_info" class="mission-card">
-        <h2>{{ mission.mission_name }} #{{mission.flight_number}}</h2>
-        <img [src]="mission.links.mission_patch_small" alt="Mission Patch">
+        <h2>{{ mission.name }} #{{mission.flight_number}}</h2>
+        <ng-container *ngIf="mission.links.patch.small; else noPatch">
+          <img [src]="mission.links.patch.small" alt="Mission Patch" style="max-width: 200px; max-height: 200px;">
+        </ng-container>
+        <ng-template #noPatch>
+          <img src="assets/spacexlogo.png" alt="No Patch Available" style="max-width: 200px; max-height: 200px;">
+        </ng-template>
         <h5>Mission Ids</h5>
-        <p>Launch Year: {{ mission.launch_year }}</p>
+        <p>Launch Year: {{ extractYearFromDate(mission.date_local) }}</p>
         <p>Details: {{ mission.details }}</p>
-        <p>Successful Launch: {{ mission.launch_success ? 'Yes' : 'No' }}</p>
+        <p>Successful Launch: {{ mission.success ? 'Yes' : 'No' }}</p>
         <p class="button" (click)="toggleMissionDetails(mission)">View Further Details</p>
         <app-missiondetails *ngIf="selectedMission && selectedMission.flight_number === mission.flight_number" [selectedMission]="selectedMission"></app-missiondetails>
       </div>
